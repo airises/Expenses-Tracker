@@ -1,0 +1,42 @@
+.btn {
+  padding: 10px 18px 10px 15px;
+  border-radius: 10px;
+  background-color: #4A026B;
+  border: none;
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 500;
+  /* box-shadow: 5px 4px 15px #3b055ee3; */
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #861ecbbc;
+  color: rgb(20, 17, 17);
+}
+
+.btn:active {
+  background-color: #4A026B;
+  color: #ffffff;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.descending:hover{
+  background-color: #353232;
+  color: #ffffff;
+}
+.ascending:hover{
+  background-color: #353232;
+  color: #ffffff;
+}
+.descending:active {
+  background-color: #dedede;
+  color: #000;
+}
+.ascending:active {
+  background-color: #dedede;
+  color: #000;
+}

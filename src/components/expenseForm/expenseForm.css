@@ -1,0 +1,21 @@
+.formContainer {
+  width: 730px;
+  background-color: #ad9be9;
+  border-radius: 12px;
+  padding: 30px 40px;
+  margin-top: 60px;
+}
+
+.input-div {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
