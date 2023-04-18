@@ -8,13 +8,3 @@ body {
   height: 100vh;
   padding: 2rem;
 }
-.expenses {
-  width: 780px;
-  padding: 28px 16px;
-  background: #1f1f1f;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 26px;
-
-}

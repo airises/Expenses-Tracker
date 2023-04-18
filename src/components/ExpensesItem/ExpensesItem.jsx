@@ -22,7 +22,7 @@ export const ExpenseItem = ({ el }) => {
               <h2>{el.title}</h2>
             </CardTitle>
             <PriceCardDiv>
-              <PriceCard className="price-card">{el.price}$</PriceCard>
+              <PriceCard >{el.price}$</PriceCard>
             </PriceCardDiv>
           </AllContainers>
         </Card>

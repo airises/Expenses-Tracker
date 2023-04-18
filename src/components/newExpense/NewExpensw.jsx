@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import React, { useState } from "react";
 import Buttons from "../UI/Button";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
@@ -18,21 +19,21 @@ export const NewExpensw = ({ onNewExpenseAdd }) => {
           onClick={openAndCloseFormHadler}
         />
       ) : (
-        <div
-          style={{
-            backgroundColor: "#AD9BE9 ",
-            height: "100px",
-            width: "810px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "12px",
-            marginTop: "50px",
-          }}
-        >
+        <ButtonDiv>
           <Buttons onClick={openAndCloseFormHadler}>Add a new expense</Buttons>
-        </div>
+        </ButtonDiv>
       )}
     </div>
   );
 };
+const ButtonDiv = styled.div`
+  background-color: #ad9be9;
+  height: 100px;
+  width: 810px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  margin-top: 50px;
+`;
+

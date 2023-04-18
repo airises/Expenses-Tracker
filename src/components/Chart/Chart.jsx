@@ -1,6 +1,6 @@
 import React from "react";
-import "./Chart.css";
 import ChartBar from "./ChartBar";
+import styled from "styled-components";
 
 function Chart({ items }) {
   const maxPercentPrice = 2000;
@@ -63,7 +63,7 @@ function Chart({ items }) {
   console.log(months);
 
   return (
-    <div className="chart">
+    <Chhart>
       {months.map((el) => {
         return (
           <ChartBar
@@ -74,8 +74,19 @@ function Chart({ items }) {
           />
         );
       })}
-    </div>
+    </Chhart>
   );
 }
 
 export default Chart;
+
+const Chhart = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #f8dfff;
+  text-align: center;
+  height: 10rem;
+  gap: 32px;
+`;

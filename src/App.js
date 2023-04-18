@@ -26,7 +26,7 @@ function App() {
     },
     {
       title: "Toilet Paper",
-      price: 100,
+      price: 300,
       date: new Date(2022, 8, 9),
     },
     {
@@ -42,7 +42,7 @@ function App() {
     {
       title: "MacBook M2 Air",
       price: 1980,
-      date: new Date(2023, 1, 31),
+      date: new Date(2023, 7, 31),
     },
 
     {
