@@ -1,8 +1,15 @@
 import "./App.css";
-import { NewExpensw, useState } from "./components/newExpense/NewExpensw";
+import { useEffect, useState } from "react";
 import { Expenses } from "./components/expenses/Expenses";
+import { ExpenseForm } from "./components/expenseForm/ExpenseForm";
+import Login from "./components/login/Login";
+import Header from "./components/header/Header";
+import styled from "styled-components";
+import { Users } from "./components/users/Users";
 
 function App() {
+  const [islogIn, setIslogIn] = useState(false);
+  const [showUser, setShowUser] = useState(false);
   const [expenses, setExpenses] = useState([
     {
       title: "Dress",
@@ -44,7 +51,6 @@ function App() {
       price: 1980,
       date: new Date(2023, 7, 31),
     },
-
     {
       title: "Chocolate-covered Strawberries",
       price: 340,
@@ -52,21 +58,72 @@ function App() {
     },
   ]);
 
-  console.log(new Date().getMonth());
-
   const addNewExpenseHandler = (data) => {
     const updatedExpenses = [...expenses];
     updatedExpenses.push(data);
     setExpenses(updatedExpenses);
   };
 
+  useEffect(() => {
+    const localstorageLogin = localStorage.getItem("keys");
+    setIslogIn(localstorageLogin);
+
+    const showusertolocal = localStorage.getItem("users");
+    setShowUser(showusertolocal);
+  }, [islogIn]);
+
+  const logInHandler = () => {
+    localStorage.setItem("keys", !islogIn);
+    setIslogIn(!islogIn);
+  };
+
+  const showUsers = () => {
+    setShowUser(true);
+    localStorage.setItem("users", showUser);
+  };
+  const showExpenses = () => {
+    setShowUser(false);
+    localStorage.removeItem("users");
+  };
   return (
     <div className="App">
-      <NewExpensw onNewExpenseAdd={addNewExpenseHandler} />
+      {islogIn ? (
+        <>
+          <Header
+            setIslogIn={setIslogIn}
+            isLogIn={islogIn}
+            showUsers={showUsers}
+            showExpenses={showExpenses}
+          />
 
-      <Expenses setExpenses={setExpenses} expenses={expenses} />
+          <TwoDivs>
+            {showUser ? (
+              <Users />
+            ) : (
+              <>
+                <ExpenseForm
+                  onNewExpenseAdd={addNewExpenseHandler}
+                  setExpenses={setExpenses}
+                  expenses={expenses}
+                />
+                <Expenses setExpenses={setExpenses} expenses={expenses} />
+              </>
+            )}
+          </TwoDivs>
+        </>
+      ) : (
+        <>
+          <Login onLogin={logInHandler} />
+        </>
+      )}
     </div>
   );
 }
 
 export default App;
+
+const TwoDivs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

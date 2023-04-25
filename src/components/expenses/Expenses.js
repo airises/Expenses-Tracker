@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import Chart from "../Chart/Chart";
 import { ExpenseItem } from "../ExpensesItem/ExpensesItem";
 import styled from "styled-components";
 
 export const Expenses = ({ expenses, setExpenses }) => {
-  const [selectedYear, setSelectYear] = useState("2022");
+  const [selectedYear, setSelectYear] = useState("2023");
 
   const yearChangeHandler = (event) => {
     setSelectYear(event.target.value);
@@ -15,9 +15,6 @@ export const Expenses = ({ expenses, setExpenses }) => {
     const stringifiedYear = new Date(element.date).getFullYear().toString();
     return stringifiedYear === selectedYear;
   });
-
-  console.log("filteredItems", filteredItems);
-  console.log("expenses", expenses);
 
   return (
     <>

@@ -1,22 +1,23 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
-function Input(props) {
+const Input = forwardRef((props, ref) => {
   return (
     <div>
       <div>
-        <InputLabel html={props.id}>{props.children}</InputLabel>
+        <InputLabel htmlFor={props.id}>{props.children}</InputLabel>
         <InputCont
           type={props.type}
           id={props.id}
           placeholder={props.placeholder}
           value={props.value}
           onChange={props.onChange}
+          ref={ref}
         />
       </div>
     </div>
   );
-}
+});
 
 export default Input;
 

@@ -60,8 +60,6 @@ function Chart({ items }) {
     months[monthNum].currentPrice += elem.price;
   });
 
-  console.log(months);
-
   return (
     <Chhart>
       {months.map((el) => {

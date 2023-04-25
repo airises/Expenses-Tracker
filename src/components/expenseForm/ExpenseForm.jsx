@@ -1,40 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Input from "../UI/Input";
 import Buttons from "../UI/Button";
 import styled from "styled-components";
 
-export const ExpenseForm = ({ onClick, onNewExpenseAdd }) => {
-  const [inputText, setInputText] = useState("");
-  const [inputNumber, setInputNumber] = useState(0);
-  const [inputDate, setInputDate] = useState("");
-
-  function getInputValue(e) {
-    setInputText(e.target.value);
-  }
-
-  function getInputNumber(e) {
-    const value = e.target.value;
-    if (value.charAt(0) !== "-") {
-      setInputNumber(value);
-    }
-  }
-
-  function getInputDate(e) {
-    setInputDate(e.target.value);
-  }
+export const ExpenseForm = ({ onNewExpenseAdd }) => {
+  const headingValue = useRef();
+  const quantityValue = useRef();
+  const dateValue = useRef();
 
   function submitHandler(event) {
     event.preventDefault();
     const product = {
-      title: inputText,
-      price: +inputNumber,
-      date: new Date(inputDate),
       id: Date.now().toString(),
+      title: headingValue.current.value,
+      price: quantityValue.current.value,
+      date: new Date(dateValue.current.value),
     };
 
     onNewExpenseAdd(product);
 
     console.log(product, "taken");
+
+    headingValue.current.value = "";
+    quantityValue.current.value = "";
+    dateValue.current.value = "";
   }
 
   return (
@@ -43,11 +32,10 @@ export const ExpenseForm = ({ onClick, onNewExpenseAdd }) => {
         <InputDiv>
           <Input
             id="1"
+            ref={headingValue}
             children="Heading "
             type="text"
             placeholder="Heading"
-            value={inputText}
-            onChange={getInputValue}
           />
           <Input
             id="2"
@@ -56,8 +44,7 @@ export const ExpenseForm = ({ onClick, onNewExpenseAdd }) => {
             placeholder="Quantiy"
             min="0.01"
             step="0.01"
-            value={inputNumber}
-            onChange={getInputNumber}
+            ref={quantityValue}
           />
           <Input
             id="3"
@@ -65,13 +52,11 @@ export const ExpenseForm = ({ onClick, onNewExpenseAdd }) => {
             type="date"
             min="2019-01-01"
             max="2025-12-31"
-            value={inputDate}
-            onChange={getInputDate}
+            ref={dateValue}
           />
         </InputDiv>
         <ButtonCont>
-          <Buttons onClick={onClick}>Cancel</Buttons>
-          <Buttons>Add expenses</Buttons>
+          <Buttons type="submit" >Add expenses</Buttons>
         </ButtonCont>
       </FormContainer>
     </div>
